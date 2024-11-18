@@ -47,19 +47,13 @@ To deliver a smooth streaming experience, the platform uses adaptive bitrate str
 ---
 
 ### **Authentication and Security**  
-OAuth handles user authentication, ensuring secure access to upload features. By integrating secure credentials, the platform ensures only authorized users can upload or modify content. This also prevents unauthorized access to backend services and sensitive data.
+The platform uses NextAuth with Google OAuth for secure user authentication. This ensures that only authorized users can access features like video uploads or account management. By using JSON Web Tokens (JWT) to manage sessions, the platform stays scalable and efficient. The authentication setup also includes custom callbacks to store user-specific data like IDs or access tokens, adding flexibility for future enhancements. Environment variables, such as `GOOGLE_CLIENT_ID` and `NEXTAUTH_SECRET`, are used to protect sensitive credentials and encrypt session data, ensuring the system is secure. Additionally, custom sign-in, sign-out, and error pages can be added to match the platform’s design, creating a seamless user experience.
 
 ---
 
 ### **Database**  
 The platform uses PostgreSQL to store all video metadata, including titles, descriptions, authors, and the URLs of the files stored in S3. This metadata is used to populate the homepage, search results, and video details pages.
 
----
-
-### **Deployment and Scaling**  
-The entire backend is containerized using Docker and orchestrated with Kubernetes for scalability and reliability. Services can scale independently, ensuring the platform handles spikes in traffic—like viral videos—without compromising performance. Cloud platforms like AWS or GCP provide the infrastructure, and managed services like Aiven handle Kafka to simplify operations.
-
----
 
 ### **Workflow (End-to-End)**
 
